@@ -34,7 +34,8 @@ There exists three samples: server setup without roles, server setup with roles,
 2. Build demo app 
 ```
 cd demo-app-ansible-deploy
-mvn clean install``
+mvn clean install
+```
 3. Call `ansible-playbook -i inventories/production -u vagrant --limit 192.168.33.10 deploy-demo.yml `
 
 ### Run Ansible vs Puppet Samples
