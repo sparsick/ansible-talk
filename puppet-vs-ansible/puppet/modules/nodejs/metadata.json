@@ -1,0 +1,13 @@
+{
+  "author": "Sandra Kosmalla",
+  "dependencies": [{ "name": "puppetlabs/apt", "version_requirement": ">=1.6.0" }],
+  "license": "",
+  "name": "amos-nodejs",
+  "operatingsystem_support": [],
+  "project_page": "",
+  "requirements": [],
+  "source": "",
+  "summary": "",
+  "tags": [],
+  "version": "0.1.0"
+}

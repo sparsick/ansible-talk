@@ -1,0 +1,2 @@
+tomcat_version: 8.0.24
+tomcat_base_name: apache-tomcat-{{ tomcat_version }}

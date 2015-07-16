@@ -1,0 +1,5 @@
+- name: start tomcat
+  command: service tomcat start
+  
+- name: wait for tomcat to start
+  wait_for: port=8080 timeout=60

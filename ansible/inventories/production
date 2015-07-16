@@ -1,0 +1,19 @@
+[application-server]
+192.168.33.10
+ubuntu-server dbhost=mysql01
+
+[mysql-db-server]
+mysql[01:10]
+
+[oracle-db-server]
+db-[a:f].oracle.company.com
+
+[database-server:children]
+mysql-db-server
+oracle-db-server
+
+[database-server:vars]
+message="Hello Word!"
+
+
+

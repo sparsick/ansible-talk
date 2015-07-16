@@ -1,0 +1,22 @@
+- name: install mysql db
+  apt: name=mysql-server state=present
+  sudo: true
+
+- name: installs python-mysqldb
+  sudo: true
+  apt: name=python-mysqldb state=present
+
+- name: start mysql
+  sudo: true
+  service: name=mysql state=started
+
+- name: set bind address
+  sudo: true
+  lineinfile: dest=/etc/mysql/my.cnf
+    line='bind-address = 0.0.0.0'
+    state=present
+    regexp=^bind-address(.*)
+  notify: restart mysql
+
+- name: creates db user dba
+  mysql_user: name=dba password=g3h31m priv=*.*:ALL,GRANT state=present host=%  

@@ -1,0 +1,7 @@
+- hosts: application-server
+  roles:
+    - jdk
+    - mysql
+    - tomcat8
+    
+      
