@@ -4,6 +4,8 @@ You can find here the slides and the sample code of my talk "Ansible for Develop
 
 ## Running the Code Samples
 
+The code samples are tested with Ansible 1.9.2 .
+
 ### Setup Test infrastructure
 I prepare a Vagrantfile for the setup of the test infrastructure. The only prerequires are that you have to install VirtualBox and Vagrant on your machine. Then follow these steps:
 
