@@ -1,8 +1,6 @@
 - name: add nodejs ppa
   apt_repository: repo='ppa:chris-lea/node.js'
-  sudo: true
 
 - name: install nodejs package
   apt: name=nodejs update-cache=yes
-  sudo: true
   

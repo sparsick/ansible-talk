@@ -1,4 +1,5 @@
 - name: stop tomcat
+  # service: name=tomcat state=stopped 
   command: service tomcat stop
   
 - name: wait tomcat shutdown

@@ -1,8 +1,10 @@
 # ansible-talk
 
-You can find here the slides and the sample code of my talk "Ansible for Developer" that I presented on Softwerkskammer Dortmund at 15th July 2015.
+You can find here the slides and the sample code of my talk "Ansible for Developer" that I presented on rheinjug at 18th February 2016.
 
 ## Running the Code Samples
+
+The code samples are tested with Ansible 2.0.0 .
 
 ### Setup Test infrastructure
 I prepare a Vagrantfile for the setup of the test infrastructure. The only prerequires are that you have to install VirtualBox and Vagrant on your machine. Then follow these steps:
@@ -18,15 +20,16 @@ Hint: Public and private keys can be generated with the following command: `ssh-
 ### Run Ansible Samples
 There exists three samples: server setup without roles, server setup with roles, deploy WAR file on an installed Apache Tomcat
 
-#### Run Setup Sample Without Roles 
+#### Run Setup Samples Without Roles 
 
 1. Go to the folder `ansible`
-2. Call `ansible-playbook -i inventories/production -u vagrant --limit 192.168.33.10 setup.yml`
+2. Call `ansible-playbook -i inventories/test -u vagrant --limit 192.168.33.10 setup-db.yml`
+3. Call `ansible-playbook -i inventories/test -u vagrant --limit 192.168.33.10 setup-app.yml`
 
 #### Run Setup Sample With Roles
 
 1. Go to the folder `ansible`
-2. Call `ansible-playbook -i inventories/production -u vagrant --limit 192.168.33.10 setup-roles.yml`
+2. Call `ansible-playbook -i inventories/test -u vagrant --limit 192.168.33.10 setup-roles.yml`
 
 #### Run Deploy Sample
 
@@ -36,7 +39,8 @@ There exists three samples: server setup without roles, server setup with roles,
 cd demo-app-ansible-deploy
 mvn clean install
 ```
-3. Call `ansible-playbook -i inventories/production -u vagrant --limit 192.168.33.10 deploy-demo.yml `
+3. Call `ansible-playbook -i inventories/test -u vagrant --limit 192.168.33.10 deploy-demo.yml `
+4. Cal URL http://192.168.33.10:8080/demo/
 
 ### Run Ansible vs Puppet Samples
 The comparision shows how a script for a node.js installation looks in Ansible and in Puppet.

@@ -1,3 +1,4 @@
 - name: install java
   apt: name=openjdk-7-jdk state=present
-  sudo: true
+  become: yes
+  become_method: sudo

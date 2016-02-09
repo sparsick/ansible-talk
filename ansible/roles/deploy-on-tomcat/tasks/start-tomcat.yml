@@ -1,4 +1,5 @@
 - name: start tomcat
+  #service: name=tomcat state=started
   command: service tomcat start
   
 - name: wait for tomcat to start

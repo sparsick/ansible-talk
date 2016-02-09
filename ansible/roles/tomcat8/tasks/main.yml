@@ -3,7 +3,8 @@
 
 - name:
   file: name=/opt mode=777
-  sudo: true
+  become: yes
+  become_method: sudo
    
 - name: Install Tomcat 8
   unarchive: src=/tmp/{{ tomcat_base_name }}.tar.gz dest=/opt creates=/opt/{{ tomcat_base_name }} owner=vagrant group=vagrant
@@ -25,4 +26,5 @@
   
 - name: install init.d script for tomcat
   copy: src=init.d/tomcat dest=/etc/init.d/tomcat owner=vagrant group=vagrant mode=755
-  sudo: true
+  become: yes
+  become_method: sudo
