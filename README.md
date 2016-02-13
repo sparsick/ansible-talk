@@ -4,7 +4,7 @@ You can find here the slides and the sample code of my talk "Ansible for Develop
 
 ## Running the Code Samples
 
-The code samples are tested with Ansible 2.0.0 .
+The code samples are tested with Ansible 2.0.0 and serverspec 2.29.2 .
 
 ### Setup Test infrastructure
 I prepare a Vagrantfile for the setup of the test infrastructure. The only prerequires are that you have to install VirtualBox and Vagrant on your machine. Then follow these steps:
@@ -30,6 +30,11 @@ There exists three samples: server setup without roles, server setup with roles,
 
 1. Go to the folder `ansible`
 2. Call `ansible-playbook -i inventories/test -u vagrant --limit 192.168.33.10 setup-roles.yml`
+
+#### Run Serverspec Tests For Setups
+
+1. Go to folder `ansible`
+2. Call `rake spec
 
 #### Run Deploy Sample
 
