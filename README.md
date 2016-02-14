@@ -34,7 +34,7 @@ There exists three samples: server setup without roles, server setup with roles,
 #### Run Serverspec Tests For Setups
 
 1. Go to folder `ansible`
-2. Call `rake spec
+2. Call `rake spec`
 
 #### Run Deploy Sample
 
