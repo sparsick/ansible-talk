@@ -1,2 +1,1 @@
-webapp_target_name: demo
 tomcat_app_base: /opt/tomcat/webapps

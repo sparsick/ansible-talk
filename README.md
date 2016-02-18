@@ -23,13 +23,13 @@ There exists three samples: server setup without roles, server setup with roles,
 #### Run Setup Samples Without Roles 
 
 1. Go to the folder `ansible`
-2. Call `ansible-playbook -i inventories/test -u vagrant --limit 192.168.33.10 setup-db.yml`
-3. Call `ansible-playbook -i inventories/test -u vagrant --limit 192.168.33.10 setup-app.yml`
+2. Call `ansible-playbook -i inventories/test -u vagrant setup-db.yml`
+3. Call `ansible-playbook -i inventories/test -u vagrant setup-app.yml`
 
 #### Run Setup Sample With Roles
 
 1. Go to the folder `ansible`
-2. Call `ansible-playbook -i inventories/test -u vagrant --limit 192.168.33.10 setup-roles.yml`
+2. Call `ansible-playbook -i inventories/test -u vagrant setup-roles.yml`
 
 #### Run Serverspec Tests For Setups
 
@@ -44,7 +44,7 @@ There exists three samples: server setup without roles, server setup with roles,
 cd demo-app-ansible-deploy
 mvn clean install
 ```
-3. Call `ansible-playbook -i inventories/test -u vagrant --limit 192.168.33.10 deploy-demo.yml `
+3. Call `ansible-playbook -i inventories/test -u vagrant deploy-demo.yml `
 4. Cal URL http://192.168.33.10:8080/demo/
 
 ### Run Ansible vs Puppet Samples
