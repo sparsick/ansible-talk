@@ -1,6 +1,6 @@
 # ansible-talk
 
-You can find here the slides and the sample code of my talk "Ansible for Developer" that I presented on rheinjug at 18th February 2016.
+You can find here the slides and the sample code of my talk "Ansible for Developer" that I presented on Frankfurter Entwicklertage at 10th March 2016.
 
 ## Running the Code Samples
 
@@ -46,6 +46,12 @@ mvn clean install
 ```
 3. Call `ansible-playbook -i inventories/test -u vagrant deploy-demo.yml `
 4. Cal URL http://192.168.33.10:8080/demo/
+
+#### Run Ad-hoc Command Sample
+
+Sample for the Ad-hoc command to stop the tomcat service: `ansible -i inventories/test -u vagrant -m command -a "service tomcat stop"`
+
+Sample for the Ad-hoc command to start the tomcat service: `ansible -i inventories/test -u vagrant -m command -a "service tomcat start"`
 
 ### Run Ansible vs Puppet Samples
 The comparision shows how a script for a node.js installation looks in Ansible and in Puppet.
