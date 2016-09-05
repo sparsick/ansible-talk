@@ -1,10 +1,10 @@
 # ansible-talk
 
-You can find here the slides and the sample code of my talk "Ansible for Developer" that I presented on Frankfurter Entwicklertage at 10th March 2016.
+You can find here the slides and the sample code of my talk "Ansible für Devs - Konfigurationsmanagement nicht nur für Ops" that I presented on Herbstcampus in Nuremberg at 31th August 2016.
 
 ## Running the Code Samples
 
-The code samples are tested with Ansible 2.0.0 and serverspec 2.29.2 .
+The code samples are tested with Ansible 2.1.1.0 and serverspec 2.31.0 .
 
 ### Setup Test infrastructure
 I prepare a Vagrantfile for the setup of the test infrastructure. The only prerequires are that you have to install VirtualBox and Vagrant on your machine. Then follow these steps:
