@@ -1,12 +1,12 @@
 # ansible-talk
 
-You can find here the slides and the sample code of my talk "Ansible für Entwickler" that I presented on JUGSaxony in Dresden at 20th September 2016.
+You can find here the slides and the sample code of my talk "Ansible für Devs - Konfigurationsmanagement nicht nur für Ops" that I presented on Continuous Lifecycle in Mannheim at 16th November 2016.
 
 ## Running the Code Samples
 
-The code samples are tested with Ansible 2.1.1.0 and serverspec 2.31.0 .
+The code samples are tested with Ansible 2.2.0.0 and serverspec 2.37.2 .
 
-### Setup Test infrastructure
+### Setup Test Infrastructure
 I prepare a Vagrantfile for the setup of the test infrastructure. The only prerequires are that you have to install VirtualBox and Vagrant on your machine. Then follow these steps:
 
 1. Open a CLI and go to the location of the file `Vagrantfile`.
@@ -49,9 +49,9 @@ mvn clean install
 
 #### Run Ad-hoc Command Sample
 
-Sample for the Ad-hoc command to stop the tomcat service: `ansible -i inventories/test -u vagrant -m command -a "service tomcat stop"`
+Sample for the Ad-hoc command to stop the tomcat service: `ansible -i inventories/test -u vagrant -m command -a "/etc/init.d/tomcat stop"`
 
-Sample for the Ad-hoc command to start the tomcat service: `ansible -i inventories/test -u vagrant -m command -a "service tomcat start"`
+Sample for the Ad-hoc command to start the tomcat service: `ansible -i inventories/test -u vagrant -m command -a "/etc/init.d/tomcat start"`
 
 ### Run Ansible vs Puppet Samples
 The comparision shows how a script for a node.js installation looks in Ansible and in Puppet.
