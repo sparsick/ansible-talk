@@ -29,7 +29,8 @@ There exists three samples: server setup without roles, server setup with roles,
 #### Run Setup Sample With Roles
 
 1. Go to the folder `ansible`
-2. Call `ansible-playbook -i inventories/test -u vagrant setup-roles.yml`
+2. Call `ansible-playbook -i inventories/test -u vagrant setup-db-roles.yml`
+3. Call `ansible-playbook -i inventories/test -u vagrant setup-app-roles.yml`
 
 #### Run Serverspec Tests For Setups
 
