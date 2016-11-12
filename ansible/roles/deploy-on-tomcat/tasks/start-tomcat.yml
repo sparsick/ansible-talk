@@ -1,6 +1,7 @@
 - name: start tomcat
-  #service: name=tomcat state=started
-  command: service tomcat start
+  command: /etc/init.d/tomcat start
+  become: true
+  become_method: sudo
   
 - name: wait for tomcat to start
   wait_for: port=8080 timeout=60

@@ -1,6 +1,7 @@
 - name: stop tomcat
-  # service: name=tomcat state=stopped 
-  command: service tomcat stop
+  command: /etc/init.d/tomcat stop
+  become: true
+  become_method: sudo
   
 - name: wait tomcat shutdown
   wait_for: port=8080 state=stopped timeout=60
