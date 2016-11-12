@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty32"
+  config.vm.box = "boxcutter/ubuntu1604-i386"
   
   # set an unique machine name
   config.vm.define :ansible_demo do |t|
