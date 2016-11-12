@@ -1,12 +1,12 @@
 - hosts: application-server
   vars:
-    tomcat_version: 8.0.24
+    tomcat_version: 8.5.8
     tomcat_base_name: apache-tomcat-{{ tomcat_version }}
     #catalina_opts: "-Dkey=value"
     
   tasks:
     - name: install java
-      apt: name=openjdk-7-jdk state=present
+      apt: name=openjdk-8-jdk state=present
       become: yes
       become_method: sudo
       
@@ -27,14 +27,13 @@
     - name: setup setenv.sh
       template: dest="/opt/{{ tomcat_base_name }}/bin/setenv.sh" src="roles/tomcat8/templates/setenv.sh.j2" mode=755
       when: catalina_opts is defined
-
-    - shell: ls /opt/{{ tomcat_base_name }}/bin/*.sh
-      register: tomcat_scripts
-      ignore_errors: yes
-
+ 
+    - find: paths="/opt/{{ tomcat_base_name }}/bin" patterns="*.sh"
+      register: result
+    
     - name: ensure tomcat scripts are executable
-      file: name={{item}} mode=755
-      with_items: tomcat_scripts.stdout_lines
+      file: name={{item.path}} mode=755
+      with_items: '{{ result.files }}'
       
     - name: install init.d script for tomcat
       copy: src=roles/tomcat8/files/init.d/tomcat dest=/etc/init.d/tomcat owner=vagrant group=vagrant mode=755
