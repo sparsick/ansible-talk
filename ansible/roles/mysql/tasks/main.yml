@@ -16,7 +16,7 @@
 - name: set bind address
   become: yes
   become_method: sudo
-  lineinfile: dest=/etc/mysql/my.cnf
+  lineinfile: dest=/etc/mysql/mysql.conf.d/mysqld.cnf
     line='bind-address = 0.0.0.0'
     state=present
     regexp=^bind-address(.*)
