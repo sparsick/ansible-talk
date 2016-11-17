@@ -1,6 +1,6 @@
 # ansible-talk
 
-You can find here the slides and the sample code of my talk "Ansible für Devs - Konfigurationsmanagement nicht nur für Ops" that I presented on Continuous Lifecycle in Mannheim at 16th November 2016.
+You can find here the slides and the sample code of my talk "Ansible für Devs - Konfigurationsmanagement nicht nur für Ops" that I presented on DevOps Frankfurt Meetup at 17th November 2016.
 
 ## Running the Code Samples
 
@@ -20,7 +20,7 @@ Hint: Public and private keys can be generated with the following command: `ssh-
 ### Run Ansible Samples
 There exists three samples: server setup without roles, server setup with roles, deploy WAR file on an installed Apache Tomcat
 
-#### Run Setup Samples Without Roles 
+#### Run Setup Samples Without Roles
 
 1. Go to the folder `ansible`
 2. Call `ansible-playbook -i inventories/test -u vagrant setup-db.yml`
@@ -40,7 +40,7 @@ There exists three samples: server setup without roles, server setup with roles,
 #### Run Deploy Sample
 
 1. Go to the folder `ansible`
-2. Build demo app 
+2. Build demo app
 ```
 cd demo-app-ansible-deploy
 mvn clean install
@@ -70,4 +70,3 @@ The comparision shows how a script for a node.js installation looks in Ansible a
 
 1. Go to `puppet-vs-ansible/ansible`
 2. Run ansible script with `ansible-playbook -u vagrant site.yml`
-
