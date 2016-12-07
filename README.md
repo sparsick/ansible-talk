@@ -1,6 +1,6 @@
 # ansible-talk
 
-You can find here the slides and the sample code of my talk "Ansible für Devs - Konfigurationsmanagement nicht nur für Ops" that I presented on DevOps Frankfurt Meetup at 17th November 2016.
+You can find here the slides and the sample code of my talk "Ansible für Entwickler" that I presented on DevOpsCon in Munich at 6th December 2016.
 
 ## Running the Code Samples
 
