@@ -1,6 +1,6 @@
 # ansible-talk
 
-You can find here the slides and the sample code of my talk "Ansible für Entwickler" that I presented on DevOpsCon in Munich at 6th December 2016.
+You can find here the slides and the sample code of my talk "Ansible für Entwickler" that I presented on DevOpsCon in Munich at 6th December 2016. It also exists a [video recording](https://youtu.be/l0SGrj1y4mI) of this talk.
 
 ## Running the Code Samples
 
