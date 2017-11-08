@@ -1,1 +1,3 @@
 /demo-app-ansible-deploy/target/
+.vagrant/
+.idea
