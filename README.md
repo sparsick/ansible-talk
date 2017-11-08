@@ -1,6 +1,6 @@
 # ansible-talk
 
-You can find here the slides and the sample code of my talk "Ansible für Java-Entwickler" that I presented on JUG Essen at 30th May 2017.
+You can find here the slides and the sample code of my talk "Ansible für Java-Entwickler" that I presented on W-JAX in Munich at 8th November 2017.
 
 ## Running the Code Samples
 
