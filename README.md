@@ -4,7 +4,7 @@ You can find here the slides and the sample code of my talk "Ansible für Java-E
 
 ## Running the Code Samples
 
-The code samples are tested with Ansible 2.3.0.0 and serverspec 2.37.2 .
+The code samples are tested with Ansible 2.4.3.0, ansible-lint 3.4.20, testinfra 1.11.1 and serverspec 2.37.2 .
 
 ### Setup Test Infrastructure
 I prepare a Vagrantfile for the setup of the test infrastructure. The only prerequires are that you have to install VirtualBox and Vagrant on your machine. Then follow these steps:
@@ -36,12 +36,14 @@ There exists three samples: server setup without roles, server setup with roles,
 1. Go to the folder `ansible`
 2. Call `ansible-lint *.yml`
 
-#### Run Serverspec Tests For Setups
+#### Run Serverspec Tests for Setups
 
 1. Go to folder `ansible`
 2. Call `rake spec`
 
-#### Run
+#### Run Testinfra Tests for Setups
+1. Go to folder `ansible`
+2. Call 'py.test --connection=ansible --ansible-inventory inventories/test -v tests/*.py'
 
 #### Run Deploy Sample
 
@@ -76,3 +78,9 @@ The comparision shows how a script for a node.js installation looks in Ansible a
 
 1. Go to `puppet-vs-ansible/ansible`
 2. Run ansible script with `ansible-playbook -u vagrant site.yml`
+
+## Links
+* http://docs.ansible.com/
+* https://github.com/willthames/ansible-lint
+* https://testinfra.readthedocs.io/en/latest/
+* http://serverspec.org/
