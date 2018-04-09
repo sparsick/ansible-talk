@@ -43,7 +43,7 @@ There exists three samples: server setup without roles, server setup with roles,
 
 #### Run Testinfra Tests for Setups
 1. Go to folder `ansible`
-2. Call 'py.test --connection=ansible --ansible-inventory inventories/test -v tests/*.py'
+2. Call `py.test --connection=ansible --ansible-inventory inventories/test -v tests/*.py`
 
 #### Run Deploy Sample
 
