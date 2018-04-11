@@ -23,7 +23,7 @@ pipeline {
         }
     post {
         always {
-            sh 'cd ..; vagrant group destroy -f'
+            sh 'cd ..; vagrant destroy -f'
         }
     }
 }
