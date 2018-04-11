@@ -1,6 +1,9 @@
 /demo-app-ansible-deploy/target/
 .vagrant/
 .idea
+__pycache__/
+.cache/
+.pytest_cache/
 
 # Created by https://www.gitignore.io/api/ansible
 
