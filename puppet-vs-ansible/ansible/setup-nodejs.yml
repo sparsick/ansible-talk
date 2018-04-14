@@ -2,8 +2,14 @@
   become: yes
   become_method: sudo
   tasks:
+    - name: Ensure Python modules
+      apt:
+        name: python-apt
+
     - name: add nodejs ppa
-      apt_repository: repo='ppa:chris-lea/node.js'
+      apt_repository:
+        repo: ppa:chris-lea/node.js
 
     - name: install nodejs package
-      apt: name=nodejs update-cache=yes
+      apt:
+        name: nodejs
