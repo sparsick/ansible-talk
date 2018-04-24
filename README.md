@@ -1,6 +1,6 @@
 # ansible-talk
 
-You can find here the slides and the sample code of my talk "Ansible für Java-Entwickler" that I presented on MD DevDays in Magdeburg at 11th April 2018.
+You can find here the slides and the sample code of my talk "Ansible für Java-Entwickler" that I presented on Cloud Native Nights - JAX 2018 Edition in Mainz at 24th April 2018.
 
 ## Running the Code Samples
 
@@ -62,6 +62,9 @@ Sample for the Ad-hoc command to stop the tomcat service: `ansible -i inventorie
 
 Sample for the Ad-hoc command to start the tomcat service: `ansible -i inventories/test -u vagrant -m command -a "/etc/init.d/tomcat start"`
 
+### QA Jenkins Pipeline
+`Jenkinsfile` demonstrates how a QA pipeline for Ansible Playbooks could looks like in Jenkins.
+
 ### Run Ansible vs Puppet Samples
 The comparision shows how a script for a node.js installation looks in Ansible and in Puppet.
 
@@ -77,9 +80,9 @@ The comparision shows how a script for a node.js installation looks in Ansible a
 #### Ansible Sample
 
 1. Go to `puppet-vs-ansible/ansible`
-2. Run ansible script with `ansible-playbook -u vagrant site.yml`
+2. Run ansible script with `ansible-playbook -u vagrant -i "192.168.33.10," setup-nodejs.yml`
 
-## Links
+## Further Links
 * http://docs.ansible.com/
 * https://github.com/willthames/ansible-lint
 * https://testinfra.readthedocs.io/en/latest/
