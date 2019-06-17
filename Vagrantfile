@@ -10,17 +10,23 @@ Vagrant.configure(2) do |config|
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
-  config.vm.define "ansible-demo" do |vbox|
-    vbox.vm.hostname = "ansible"
+  config.trigger.after :up do |trigger|
+    trigger.name = "Copy SSH key"
+    trigger.info = "Copy SSH key"
+    trigger.run = {path: "setupSSH.sh"}
+  end
+
+  config.vm.define "test" do |vbox|
+    vbox.vm.hostname = "test"
 
     # Every Vagrant development environment requires a box. You can search for
     # boxes at https://atlas.hashicorp.com/search.
-    vbox.vm.box = "bento/ubuntu-16.04"
+    vbox.vm.box = "bento/ubuntu-18.04"
     # Create a private network, which allows host-only access to the machine
     # using a specific IP.
     vbox.vm.network "private_network", ip: "192.168.33.10"
     vbox.vm.provision "shell", inline: <<-SHELL
-        sudo apt-get update
+#        sudo apt-get update
     #   sudo apt-get install -y apache2
     SHELL
   end

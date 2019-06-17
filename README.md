@@ -10,12 +10,8 @@ The code samples are tested with Ansible 2.4.3.0, ansible-lint 3.4.20, testinfra
 I prepare a Vagrantfile for the setup of the test infrastructure. The only prerequires are that you have to install VirtualBox and Vagrant on your machine. Then follow these steps:
 
 1. Open a CLI and go to the location of the file `Vagrantfile`.
-2. Call `vagrant up`. Vagrant will download the necessary image for VirtualBox. That will take some times.
-3. Then copy your public key for the authentication that is needed for a SSH login.
-```
-ssh-copy-id -i ~/.ssh/id_rsa vagrant@192.168.33.10
-```
-Hint: Public and private keys can be generated with the following command: `ssh-keygen`
+2. Call `vagrant up`. Vagrant will download the necessary image for VirtualBox and it'll prepare ssh key for ansible. That will take some times.
+
 
 ### Run Ansible Samples
 There exists three samples: server setup without roles, server setup with roles, deploy WAR file on an installed Apache Tomcat
