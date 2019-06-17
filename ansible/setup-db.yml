@@ -2,12 +2,14 @@
   become: yes
   become_method: sudo
 
-  tasks:    
+  tasks:
+    - name: install needed python package
+      apt:
+        name: ['python-mysqldb', 'python-apt']
+        state: present
+
     - name: install mysql db
       apt: name=mysql-server state=present
-
-    - name: installs python-mysqldb
-      apt: name=python-mysqldb state=present
 
     - name: start mysql
       service: name=mysql state=started
