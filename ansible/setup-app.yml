@@ -1,6 +1,6 @@
 - hosts: application_server
   vars:
-    tomcat_version: 8.5.8
+    tomcat_version: 8.5.46
     tomcat_base_name: apache-tomcat-{{ tomcat_version }}
     #catalina_opts: "-Dkey=value"
 

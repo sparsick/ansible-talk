@@ -1,4 +1,4 @@
 - hosts: application_server
   roles:
     - jdk
-    - { role: tomcat8, tomcat_version: 8.5.8 }
+    - { role: tomcat8, tomcat_version: 8.5.46 }
