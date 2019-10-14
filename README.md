@@ -1,10 +1,10 @@
 # ansible-talk
 
-You can find here the slides and the sample code of my talk "Ansible für Java-Entwickler" that I presented on Cloud Native Nights - JAX 2018 Edition in Mainz at 24th April 2018.
+You can find here the slides and the sample code of my talk "Ansible für Java-Entwickler" that I presented on JUG Schweiz in Luzern at 15th October 2019.
 
 ## Running the Code Samples
 
-The code samples are tested with Ansible 2.8.0, ansible-lint 3.4.20, testinfra 1.11.1 and serverspec 2.37.2 .
+The code samples are tested with Ansible 2.8.0, ansible-lint 3.4.20, testinfra 1.11.1, serverspec 2.37.2 and Molecule 3.0.
 
 ### Setup Test Infrastructure
 I prepare a Vagrantfile for the setup of the test infrastructure. The only prerequires are that you have to install VirtualBox and Vagrant on your machine. Then follow these steps:
@@ -40,6 +40,10 @@ There exists three samples: server setup without roles, server setup with roles,
 #### Run Testinfra Tests for Setups
 1. Go to folder `ansible`
 2. Call `py.test --connection=ansible --ansible-inventory inventories/test -v tests/*.py`
+
+#### Run Molecule Tests for Setups
+1. Go to folder `ansible`
+2. Call `molecule test`
 
 #### Run Deploy Sample
 
