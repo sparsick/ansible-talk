@@ -4,7 +4,7 @@ You can find here the slides and the sample code of my talk "Ansible für Java-E
 
 ## Running the Code Samples
 
-The code samples are tested with Ansible 2.8.0, ansible-lint 3.4.20, testinfra 1.11.1, serverspec 2.37.2 and Molecule 3.0.
+The code samples are tested with Ansible 2.8.5, ansible-lint 4.1.0, testinfra 3.2.0, serverspec 2.37.2 and Molecule 3.0.
 
 ### Setup Test Infrastructure
 I prepare a Vagrantfile for the setup of the test infrastructure. The only prerequires are that you have to install VirtualBox and Vagrant on your machine. Then follow these steps:
