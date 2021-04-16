@@ -1,42 +1,54 @@
 ---
 - name: Download current Tomcat 8 version
-  get_url:
-    url: "http://archive.apache.org/dist/tomcat/tomcat-8/v{{ tomcat_version }}
-/bin/{{ tomcat_base_name }}.tar.gz"
+  local_action:
+    module: get_url
+    url: "http://archive.apache.org/dist/tomcat/tomcat-8/v{{ tomcat_version }}/bin/{{ tomcat_base_name }}.tar.gz"
     dest: "/tmp"
-  delegate_to: localhost
 
-- name: prepare opt
-  file: name=/opt mode=777
-  become: true
-  become_method: sudo
+- name: create opt dir
+  file:
+    name: /opt
+    mode: "u+rwx,g+rx,a+r"
+    owner: vagrant
+    group: vagrant
+  become: yes
 
 - name: Install Tomcat 8
   unarchive:
     src: "/tmp/{{ tomcat_base_name }}.tar.gz"
-    dest: "/opt creates=/opt/{{ tomcat_base_name }}"
-    owner: "vagrant"
-    group: "vagrant"
+    dest: "/opt"
+    creates: "/opt/{{ tomcat_base_name }}"
+    owner: vagrant
+    group: vagrant
+    # remote_src: truee
 
 - name: Set link to tomcat 8
-  file: src=/opt/{{ tomcat_base_name }} dest=/opt/tomcat  state=link force=true
+  file:
+    src: "/opt/{{ tomcat_base_name }}"
+    dest: "/opt/tomcat"
+    state: link
+    force: true
 
 - name: setup setenv.sh
   template:
     dest: "/opt/{{ tomcat_base_name }}/bin/setenv.sh"
-    src: "setenv.sh.j2"
-    mode: 0755
+    src: "roles/tomcat8/templates/setenv.sh.j2"
+    mode: 755
   when: catalina_opts is defined
 
-- name: "find all shell scripts"
-  find: paths="/opt/{{ tomcat_base_name }}/bin" patterns="*.sh"
+- find:
+    paths: "/opt/{{ tomcat_base_name }}/bin"
+    patterns: "*.sh"
   register: result
 
 - name: ensure tomcat scripts are executable
-  file: name={{ item.path }} mode=755
-  with_items: '{{ result.files }}'
+  file:
+    name: "{{item.path}}"
+    mode: "u+rwx,g+rx,a+r"
+  loop: '{{ result.files }}'
 
 - name: install tomcat as service
-  copy: src=tomcat.service dest=/etc/systemd/system/
-  become: true
-  become_method: sudo
+  copy:
+    src: roles/tomcat8/files/tomcat.service
+    dest: /etc/systemd/system/
+  become: yes

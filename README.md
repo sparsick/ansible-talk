@@ -4,7 +4,7 @@ You can find here the slides and the sample code of my talk "Ansible für Java-E
 
 ## Running the Code Samples
 
-The code samples are tested with Ansible 2.8.5, ansible-lint 4.1.0, testinfra 3.2.0, serverspec 2.37.2 and Molecule 3.0.
+The code samples are tested with Ansible 2.10.8, ansible-lint 4.1.0, testinfra 3.2.0, serverspec 2.37.2 and Molecule 3.0.
 
 ### Setup Test Infrastructure
 I prepare a Vagrantfile for the setup of the test infrastructure. The only prerequires are that you have to install VirtualBox and Vagrant on your machine. Then follow these steps:
@@ -15,6 +15,15 @@ I prepare a Vagrantfile for the setup of the test infrastructure. The only prere
 
 ### Run Ansible Samples
 There exists three samples: server setup without roles, server setup with roles, deploy WAR file on an installed Apache Tomcat
+
+Some samples are based on Ansible community collections, that are defined in `ansible/collections/requirements.yml`
+
+For installing the Ansible community collections, run
+
+```shell
+ansible-galaxy install -r ansible/collections/requirements.yml
+``
+
 
 #### Run Setup Samples Without Roles
 

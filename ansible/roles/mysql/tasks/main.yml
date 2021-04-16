@@ -1,28 +1,34 @@
-- name: install mysql db
-  apt: name=mysql-server state=present
-  become: yes
-  become_method: sudo
+- name: install needed python package
+  apt:
+    name: python3-pymysql  #['python-mysqldb', 'python-apt']
+    state: present
+    update_cache: yes
 
-- name: installs python-mysqldb
-  become: yes
-  become_method: sudo
-  apt: name=python-mysqldb state=present
+- name: install mysql-server
+  apt:
+    name: mysql-server
+    state: present
 
 - name: start mysql
-  become: yes
-  become_method: sudo
-  service: name=mysql state=started
+  service:
+    name: mysql
+    state: started
 
 - name: set bind address
-  become: yes
-  become_method: sudo
-  lineinfile: dest=/etc/mysql/mysql.conf.d/mysqld.cnf
-    line='bind-address = 0.0.0.0'
-    state=present
-    regexp=^bind-address(.*)
+  lineinfile:
+    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+    line: 'bind-address = 0.0.0.0'
+    state: present
+    regexp: "^bind-address(.*)"
   notify: restart mysql
 
 - name: creates db user dba
-  become: yes
-  become_method: sudo
-  mysql_user: name=dba password=g3h31m priv=*.*:ALL,GRANT state=present host=%  
+  mysql_user:
+    name: dba
+    password: "g3h31m"
+    login_user: root
+    login_password: password
+    priv: "*.*:ALL,GRANT"
+    state: present
+    host: "%"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
