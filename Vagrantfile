@@ -21,10 +21,10 @@ Vagrant.configure(2) do |config|
 
     # Every Vagrant development environment requires a box. You can search for
     # boxes at https://atlas.hashicorp.com/search.
-    vbox.vm.box = "bento/ubuntu-20.04"
+    vbox.vm.box = "generic/ubuntu2204"
     # Create a private network, which allows host-only access to the machine
     # using a specific IP.
-    vbox.vm.network "private_network", ip: "192.168.33.10"
+    vbox.vm.network "private_network", ip: "192.168.56.10"
     vbox.vm.provision "shell", inline: <<-SHELL
 #        sudo apt-get update
     #   sudo apt-get install -y apache2
