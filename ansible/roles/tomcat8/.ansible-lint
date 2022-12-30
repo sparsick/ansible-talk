@@ -1,2 +1,4 @@
 skip_list:
-  - 701
+  - fqcn-builtins
+  - risky-file-permissions
+  - unnamed-task

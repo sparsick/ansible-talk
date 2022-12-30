@@ -1,0 +1,12 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: ensure group vagrant exists
+      group:
+        name: vagrant
+
+    - name: ensure user vagrant exists
+      user:
+        name: vagrant
+        groups: vagrant 

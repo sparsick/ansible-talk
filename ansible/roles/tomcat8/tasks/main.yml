@@ -1,9 +1,9 @@
 ---
 - name: Download current Tomcat 8 version
-  local_action:
-    module: get_url
+  get_url:
     url: "http://archive.apache.org/dist/tomcat/tomcat-8/v{{ tomcat_version }}/bin/{{ tomcat_base_name }}.tar.gz"
     dest: "/tmp"
+  delegate_to: localhost
 
 - name: create opt dir
   file:
@@ -33,7 +33,7 @@
   template:
     dest: "/opt/{{ tomcat_base_name }}/bin/setenv.sh"
     src: "roles/tomcat8/templates/setenv.sh.j2"
-    mode: 755
+    mode: 0755
   when: catalina_opts is defined
 
 - find:
@@ -43,12 +43,12 @@
 
 - name: ensure tomcat scripts are executable
   file:
-    name: "{{item.path}}"
+    name: "{{ item.path }}"
     mode: "u+rwx,g+rx,a+r"
   loop: '{{ result.files }}'
 
 - name: install tomcat as service
   copy:
-    src: roles/tomcat8/files/tomcat.service
+    src: tomcat.service
     dest: /etc/systemd/system/
   become: yes

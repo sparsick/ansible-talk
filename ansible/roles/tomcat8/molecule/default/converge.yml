@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include tomcat8"
+      include_role:
+        name: "tomcat8"
