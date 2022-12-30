@@ -14,10 +14,10 @@
       become_method: sudo
 
     - name: Download current Tomcat 8 version
-      local_action:
-        module: get_url
+      get_url:
         url: "http://archive.apache.org/dist/tomcat/tomcat-8/v{{ tomcat_version }}/bin/{{ tomcat_base_name }}.tar.gz"
         dest: "/tmp"
+      delegate_to: localhost
 
     - name: create opt dir
       file:
@@ -57,7 +57,7 @@
 
     - name: ensure tomcat scripts are executable
       file:
-        name: "{{item.path}}"
+        name: "{{ item.path }}"
         mode: "u+rwx,g+rx,a+r"
       loop: '{{ result.files }}'
 
