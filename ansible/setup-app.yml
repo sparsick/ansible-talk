@@ -1,68 +1,67 @@
 - hosts: application_server
   vars:
-    tomcat_version: 8.5.46
+    tomcat_version: 11.0.8
     tomcat_base_name: apache-tomcat-{{ tomcat_version }}
     #catalina_opts: "-Dkey=value"
 
   tasks:
     - name: install java
-      apt:
-        name: openjdk-8-jdk
+      ansible.builtin.apt:
+        name: openjdk-21-jdk
         state: present
         update_cache: yes
       become: yes
       become_method: sudo
 
-    - name: Download current Tomcat 8 version
-      get_url:
-        url: "http://archive.apache.org/dist/tomcat/tomcat-8/v{{ tomcat_version }}/bin/{{ tomcat_base_name }}.tar.gz"
+    - name: Download current Tomcat 11 version
+      ansible.builtin.get_url:
+        url: "http://archive.apache.org/dist/tomcat/tomcat-11/v{{ tomcat_version }}/bin/{{ tomcat_base_name }}.tar.gz"
         dest: "/tmp"
       delegate_to: localhost
 
     - name: create opt dir
-      file:
+      ansible.builtin.file:
         name: /opt
         mode: "u+rwx,g+rx,a+r"
         owner: vagrant
         group: vagrant
       become: yes
 
-    - name: Install Tomcat 8
-      unarchive:
+    - name: Install Tomcat 11
+      ansible.builtin.unarchive:
         src: "/tmp/{{ tomcat_base_name }}.tar.gz"
         dest: "/opt"
         creates: "/opt/{{ tomcat_base_name }}"
         owner: vagrant
         group: vagrant
-        # remote_src: truee
 
-    - name: Set link to tomcat 8
-      file:
+    - name: Set link to tomcat 11
+      ansible.builtin.file:
         src: "/opt/{{ tomcat_base_name }}"
         dest: "/opt/tomcat"
         state: link
         force: true
 
     - name: setup setenv.sh
-      template:
+      ansible.builtin.template:
         dest: "/opt/{{ tomcat_base_name }}/bin/setenv.sh"
-        src: "roles/tomcat8/templates/setenv.sh.j2"
+        src: "roles/tomcat11/templates/setenv.sh.j2"
         mode: 755
       when: catalina_opts is defined
 
-    - find:
+    - ansible.builtin.find:
         paths: "/opt/{{ tomcat_base_name }}/bin"
         patterns: "*.sh"
       register: result
 
     - name: ensure tomcat scripts are executable
-      file:
+      ansible.builtin.file:
         name: "{{ item.path }}"
         mode: "u+rwx,g+rx,a+r"
       loop: '{{ result.files }}'
 
     - name: install tomcat as service
-      copy:
-        src: roles/tomcat8/files/tomcat.service
+      ansible.builtin.copy:
+        src: roles/tomcat11/files/tomcat.service
         dest: /etc/systemd/system/
       become: yes
