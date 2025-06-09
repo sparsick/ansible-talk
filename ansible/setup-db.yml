@@ -1,34 +1,34 @@
 - hosts: database_server
   become: yes
   vars:
-    mysql_root_password: password
+    mariadb_root_password: password
   tasks:
     - name: install needed python package
-      apt:
-        name: python3-pymysql  #['python-mysqldb', 'python-apt']
+      ansible.builtin.apt:
+        name: python3-pymysql
         state: present
         update_cache: yes
 
-    - name: install mysql-server
-      apt:
-        name: mysql-server
+    - name: install mariadb-server
+      ansible.builtin.apt:
+        name: mariadb-server
         state: present
 
-    - name: start mysql
-      service:
-        name: mysql
+    - name: start mariadb
+      ansible.builtin.service:
+        name: mariadb
         state: started
 
     - name: set bind address
-      lineinfile:
-        dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+      ansible.builtin.lineinfile:
+        dest: /etc/mysql/mariadb.conf.d/50-server.cnf
         line: 'bind-address = 0.0.0.0'
         state: present
         regexp: "^bind-address(.*)"
-      notify: restart mysql
+      notify: restart mariadb
 
     - name: creates db user dba
-      mysql_user:
+      ansible.builtin.mysql_user:
         name: dba
         password: "g3h31m"
         login_user: root
@@ -39,7 +39,7 @@
         login_unix_socket: /var/run/mysqld/mysqld.sock
 
   handlers:
-     - name: restart mysql
-       service:
-         name: mysql
+     - name: restart mariadb
+       ansible.builtin.service:
+         name: mariadb
          state: restarted

@@ -1,15 +1,15 @@
 [application_server]
-192.168.33.10
-ubuntu_server db_host=mysql01
+192.168.56.10
+ubuntu_server db_host=mariadb01
 
-[mysql_db_server]
-mysql[01:10]
+[maria_db_server]
+mariadb[01:10]
 
 [oracle_db_server]
 db_[a:f].oracle.company.com
 
 [database_server:children]
-mysql_db_server
+mariadb_db_server
 oracle_db_server
 
 [application_server:vars]
