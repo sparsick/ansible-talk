@@ -1,26 +1,26 @@
 - name: install needed python package
   apt:
-    name: python3-pymysql  #['python-mysqldb', 'python-apt']
+    name: python3-pymysql
     state: present
     update_cache: yes
 
-- name: install mysql-server
+- name: install mariadb-server
   apt:
-    name: mysql-server
+    name: mariadb-server
     state: present
 
-- name: start mysql
+- name: start mariadb
   service:
-    name: mysql
+    name: mariadb
     state: started
 
 - name: set bind address
   lineinfile:
-    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+    dest: /etc/mysql/mariadb.conf.d/50-server.cnf
     line: 'bind-address = 0.0.0.0'
     state: present
     regexp: "^bind-address(.*)"
-  notify: restart mysql
+  notify: restart mariadb
 
 - name: creates db user dba
   mysql_user:
