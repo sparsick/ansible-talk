@@ -28,7 +28,7 @@
       notify: restart mariadb
 
     - name: creates db user dba
-      ansible.builtin.mysql_user:
+      community.mysql.mysql_user:
         name: dba
         password: "g3h31m"
         login_user: root
