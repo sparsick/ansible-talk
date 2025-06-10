@@ -1,4 +1,5 @@
+#cat tasks/cleanup-webapp.yml
 - name: cleanup {{ webapp_target_name }}
-  file:
+  ansible.builtin.file:
     name: "{{tomcat_app_base}}/{{ webapp_target_name }}"
     state: absent

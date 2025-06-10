@@ -1,11 +1,12 @@
+# cat tasks/start-tomcat.yml
 - name: start tomcat
-  service:
+  ansible.builtin.service:
     name: tomcat
     enabled: yes
     state: started
   become: true
 
 - name: wait for tomcat to start
-  wait_for:
+  ansible.builtin.wait_for:
     port: 8080
     timeout: 60
