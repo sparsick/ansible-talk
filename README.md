@@ -1,10 +1,10 @@
 # ansible-talk
 
-You can find here the slides and the sample code of my talk "Ansible für Java-Entwickler" that I presented on JUG Schweiz in Luzern at 15th October 2019.
+You can find here the slides and the sample code of my talk "Ansible für Java-Entwickler" that I presented on JUG Hamburg in Hamburg at 11th June 2025.
 
 ## Running the Code Samples
 
-The code samples are tested with Ansible 2.10.8, ansible-lint 4.3.7, testinfra 3.2.0, serverspec 2.41.5 and Molecule 3.0.
+The code samples are tested with Ansible 2.18.6, ansible-lint 25.5.0, testinfra 6.0.0 and Molecule 25.5.0.
 
 ### Setup Test Infrastructure
 I prepare a Vagrantfile for the setup of the test infrastructure. The only prerequires are that you have to install VirtualBox and Vagrant on your machine. Then follow these steps:
@@ -14,7 +14,11 @@ I prepare a Vagrantfile for the setup of the test infrastructure. The only prere
 
 
 ### Run Ansible Samples
-There exists three samples: server setup without roles, server setup with roles, deploy WAR file on an installed Apache Tomcat
+There exists three samples:
+
+1. server setup without roles
+2. server setup with roles
+3. Deploy WAR file on an installed Apache Tomcat
 
 Some samples are based on Ansible community collections, that are defined in `ansible/collections/requirements.yml`
 
@@ -41,17 +45,12 @@ ansible-galaxy install -r ansible/collections/requirements.yml
 1. Go to the folder `ansible`
 2. Call `ansible-lint *.yml`
 
-#### Run Serverspec Tests for Setups
-
-1. Go to folder `ansible`
-2. Call `rake spec`
-
 #### Run Testinfra Tests for Setups
 1. Go to folder `ansible`
 2. Call `py.test --connection=ansible --ansible-inventory inventories/test -v tests/*.py`
 
-#### Run Molecule Tests for Setups
-1. Go to folder `ansible`
+#### Run Molecule Tests for Setups (currently not working with 25.5.0)
+1. Go to folder `ansible/tomcat11`
 2. Call `molecule test`
 
 #### Run Deploy Sample
@@ -63,7 +62,7 @@ cd demo-app-ansible-deploy
 mvn clean install
 ```
 3. Call `ansible-playbook -i inventories/test -u vagrant deploy-demo.yml `
-4. Cal URL http://192.168.33.10:8080/demo/
+4. Call URL http://192.168.56.10:8080/demo/
 
 #### Run Ad-hoc Command Sample
 
@@ -89,7 +88,7 @@ The comparision shows how a script for a node.js installation looks in Ansible a
 #### Ansible Sample
 
 1. Go to `puppet-vs-ansible/ansible`
-2. Run ansible script with `ansible-playbook -u vagrant -i "192.168.33.10," setup-nodejs.yml`
+2. Run ansible script with `ansible-playbook -u vagrant -i "192.168.56.10," setup-nodejs.yml`
 
 ## Further Links
 * http://docs.ansible.com/
